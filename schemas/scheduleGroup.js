@@ -9,10 +9,7 @@ const scheduleGroupSchema = new Schema({
     type: Date,
     required: true,
   },
-  endDate: {
-    type: Date,
-    required: true,
-  },
+  endDate: Date,
   hourlyPay: {
     type: Number,
     required: true,
@@ -25,6 +22,16 @@ const scheduleGroupSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  schedules: [
+    {
+      days: [Number],
+      hour: Number,
+      min: Number,
+      ampm: String,
+      subject: String,
+      minsInSession: Number,
+    },
+  ],
   memo: String,
   studentId: {
     type: ObjectId,

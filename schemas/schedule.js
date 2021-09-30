@@ -33,11 +33,28 @@ const scheduleSchema = new Schema({
       updatedEndDateTime: Date,
     },
   ],
-  studentId: {
+  student: {
+    type: ObjectId,
+    ref: "Student",
+    required: true,
+  },
+  memo: [
+    {
+      text: {
+        type: String,
+        required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
+  groupId: {
     type: ObjectId,
     required: true,
   },
-  groupId: {
+  userId: {
     type: ObjectId,
     required: true,
   },
