@@ -12,4 +12,10 @@ const addHours = (date, hours) => {
   return d;
 };
 
-module.exports = { setTime, addHours };
+const addMinutes = (date, minutes) => {
+  const d = new Date(date.valueOf());
+  d.setMinutes(d.getMinutes() + minutes);
+  return d;
+};
+
+module.exports = { setTime, addHours, addMinutes };
