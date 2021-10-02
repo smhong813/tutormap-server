@@ -60,8 +60,11 @@ router.post("/", async (req, res, next) => {
               schedules[i].min,
               schedules[i].ampm
             );
-
-            const endDateTime = dateUtils.addHours(startDateTime, 2);
+            console.log("minsInSession:", schedules[i].minsInSession);
+            const endDateTime = dateUtils.addMinutes(
+              startDateTime,
+              schedules[i].minsInSession
+            );
             newSchedules.push({
               subject: schedules[i].subject,
               startDateTime,
@@ -87,7 +90,7 @@ router.post("/", async (req, res, next) => {
     );
 
     const schedulesInsertResult = await Schedule.insertMany(newSchedules);
-    console.log(schedulesInsertResult);
+    // console.log(schedulesInsertResult);
     res.json({});
   } catch (err) {
     console.log(err);
